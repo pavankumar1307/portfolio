@@ -19733,3 +19733,10 @@ body.white-version .popup-mobile-menu .primary-menu .has-droupdown .submenu {
   font-size: 50px!important;
 }
 }
+#msg{
+  color: #61b752;
+  margin-top: 30px;
+  font-size: smaller;
+  display: block;
+
+}
