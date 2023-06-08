@@ -658,7 +658,7 @@
                         <div class="contact-form-wrapper">
                             <div class="introduce">
 
-                                <form class="rnt-contact-form rwt-dynamic-form row" id="contact-form" method="POST" action="mail.php">
+                                <form class="rnt-contact-form rwt-dynamic-form row" name="submit-to-google-sheet" id="contact-form" method="POST" >
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -700,8 +700,10 @@
                                             <span>SEND MESSAGE</span>
                                             <i data-feather="arrow-right"></i>
                                         </button>
-                                    </div>
+                                    </div> <br> 
+                                    <span id="msg"></span
                                 </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -1034,6 +1036,23 @@
 
         );
     </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzL8JY8bs1xuR2fLq5i6lyE1_ViW_7kHOV4YRk1Rw-sw7WwUhXYjEb-Jo3RxAYlKEZV/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {msg.innerHTML = "Your message has been Triumphantly delivered to Pavan "
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 </body>
 
 </html>
